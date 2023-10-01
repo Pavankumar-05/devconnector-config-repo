@@ -4,7 +4,7 @@ spring:
   datasource:
     username: newroot
     password: root
-    url: jdbc:mysql://localhost:3306/userdb
+    url: jdbc:mysql://localhost:3306/userdb?createDatabaseIfNotExist=true
     hikari:
       connection-timeout: 60000
       maximum-pool-size: 5
