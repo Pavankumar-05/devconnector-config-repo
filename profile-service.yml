@@ -1,8 +1,14 @@
 spring:
+  application:
+    name: profile-service
   datasource:
-    username: newroot
+    username: root
     password: root
     url: jdbc:mysql://localhost:3306/profiledb?createDatabaseIfNotExist=true
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+      auto-commit: true
   jpa:
     hibernate:
       ddl-auto: update
@@ -10,25 +16,14 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-  application:
-    name: profile-service
 server:
   port: 0
   error:
     include-message: always
 eureka:
   instance:
+    lease-renewal-interval-in-seconds: 30
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     client:
       serviceUrl:
-        defaultZone: http://localhost:8761/eureka/
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh,health
-api:
-  user: http://USER-SERVICE/user
+        defaultZone: http://localhost:8761/eureka
