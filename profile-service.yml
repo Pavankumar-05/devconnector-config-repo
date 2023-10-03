@@ -27,3 +27,5 @@ eureka:
     client:
       serviceUrl:
         defaultZone: http://localhost:8761/eureka
+api:
+  customer: http://USER-SERVICE/user
