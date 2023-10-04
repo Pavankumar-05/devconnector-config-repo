@@ -29,6 +29,6 @@ eureka:
         defaultZone: http://localhost:8761/eureka
 api:
   customer: http://USER-SERVICE/api/user
-  experience: http://EXPERIENCE-SERVICE/experience
+  experience: http://EXPERIENCE-SERVICE/api/experience
   education: http://EDUCATION-SERVICE/api/education
   auth: http://AUTH-SERVICE/api/user
